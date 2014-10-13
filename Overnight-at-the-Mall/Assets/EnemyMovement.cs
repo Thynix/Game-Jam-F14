@@ -25,9 +25,10 @@ public class EnemyMovement : MonoBehaviour {
 			if (nextIndex > waypoints.Length - 1) {
 				nextIndex = 0;
 			}
-			Vector3 direction = waypoints [nextIndex].transform.position - transform.position;
-			if (Vector3.Angle (transform.forward, direction ) > 10) {
-				transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), 4*Time.deltaTime);
+			Vector3 direction = waypoints[nextIndex].transform.position - transform.position;
+			if (Vector3.Angle(transform.forward, direction) > 10) {
+				var towards = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 4*Time.deltaTime);
+				rigidbody.MoveRotation(towards);
 			}
 			else {
 				currentIndex = nextIndex;
