@@ -8,7 +8,7 @@ public class EnemyMovement : MonoBehaviour {
 	private int currentIndex;
 	
 	private float moveSpeed = 10.0f;
-	private float minDistance = 2.0f;
+	private float minDistance = 0.5f;
 
 	
 	// Use this for initialization
@@ -19,19 +19,29 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		MoveTowardWaypoint();
-		if(Vector3.Distance (currentWaypoint.transform.position, transform.position) < minDistance){
-			++currentIndex;
-			if(currentIndex > waypoints.Length-1){
-				currentIndex = 0;
+		if (Vector3.Distance (currentWaypoint.transform.position, transform.position) < minDistance) {
+			int nextIndex = currentIndex;
+			++nextIndex;
+			if (nextIndex > waypoints.Length - 1) {
+				nextIndex = 0;
 			}
-			currentWaypoint = waypoints[currentIndex];
+			Vector3 direction = waypoints[nextIndex].transform.position - transform.position;
+			if (Vector3.Angle(transform.forward, direction) > 10) {
+				var towards = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 4*Time.deltaTime);
+				rigidbody.MoveRotation(towards);
+			}
+			else {
+				currentIndex = nextIndex;
+				currentWaypoint = waypoints [currentIndex];
+			}
+		} else {
+			MoveTowardWaypoint ();
 		}
 	}
 	private void MoveTowardWaypoint(){
 		Vector3 direction = currentWaypoint.transform.position - transform.position;
 		Vector3 moveVector = direction.normalized * moveSpeed * Time.deltaTime;
 		transform.position += moveVector;
-		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), 4 * Time.deltaTime);
+		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), Time.deltaTime);
 	}
 }
