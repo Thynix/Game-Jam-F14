@@ -12,7 +12,8 @@ public class PlayerMovement : MonoBehaviour {
 		{KeyCode.D, new Vector3(1, 0, 0)},
 	};
 
-	float moveSpeed = 500;
+	// 10 meters / second -- TODO: Why is it this? Unit vector * this * seconds?
+	public float moveSpeed = 500;
 
 	// Use this for initialization
 	void Start () {
