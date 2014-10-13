@@ -18,7 +18,7 @@ public class SightTrigger : MonoBehaviour {
 			print ("HIT");
 			Transform body= transform.parent;
 			RaycastHit rayInfo;
-			if(Physics.Raycast(body.position, other.transform.position-body.position*4.5f, out rayInfo)){
+			if(Physics.Raycast(body.position, other.transform.position-body.position, out rayInfo)){
 				if(rayInfo.collider.tag=="Player"){
 					gameOver();
 				}
@@ -29,5 +29,11 @@ public class SightTrigger : MonoBehaviour {
 	void gameOver(){
 		//do game over stuff
 		print ("GAME OVER");
+	}
+
+	void OnDrawGizmosSelected () {
+		Gizmos.color = Color.red;
+		Vector3 direction = transform.TransformDirection (Vector3.forward) * 5;
+		Gizmos.DrawRay (transform.position, direction);
 	}
 }
