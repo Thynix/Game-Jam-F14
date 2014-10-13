@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
 	};
 
 	// 10 meters / second -- TODO: Why is it this? Unit vector * this * seconds?
-	public float moveSpeed = 500;
+	public float moveSpeed;
 
 	// Use this for initialization
 	void Start () {

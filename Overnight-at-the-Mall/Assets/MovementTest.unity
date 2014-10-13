@@ -990,6 +990,10 @@ Prefab:
       propertyPath: m_Intensity
       value: .5
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
+      propertyPath: moveSpeed
+      value: 500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
   m_RootGameObject: {fileID: 1042212430}
