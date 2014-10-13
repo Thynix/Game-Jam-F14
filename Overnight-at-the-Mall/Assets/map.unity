@@ -9081,15 +9081,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400002, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -20
+      value: -.458969116
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -49.7927856
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 3.90499997
+      value: 3.90499353
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
       propertyPath: m_LocalRotation.x
@@ -9170,6 +9170,14 @@ Prefab:
     - target: {fileID: 400000, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400000, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
+      propertyPath: m_Constraints
+      value: 112
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11400000, guid: c4cd6821879f14ad8a782453a7f17e16, type: 2}
@@ -11196,7 +11204,7 @@ GameObject:
   - 114: {fileID: 2017883560}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11212,7 +11220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2d5908515684d6a8c890793f33ba35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2000
+  moveSpeed: 500
 --- !u!54 &2017883561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11224,10 +11232,10 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: .0500000007
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 120
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!23 &2017883562
 Renderer:
@@ -11278,7 +11286,7 @@ Transform:
   m_PrefabInternal: {fileID: 1505658587}
   m_GameObject: {fileID: 2017883559}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -1.62920685e-07}
-  m_LocalPosition: {x: -20, y: 0, z: 3.90499997}
+  m_LocalPosition: {x: -.458969116, y: -49.7927856, z: 3.90499353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 801490790}
