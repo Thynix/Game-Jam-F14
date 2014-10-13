@@ -19,7 +19,6 @@ public class EnemyMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		print (currentIndex);
 		if (Vector3.Distance (currentWaypoint.transform.position, transform.position) < minDistance) {
 			int nextIndex = currentIndex;
 			++nextIndex;
@@ -29,7 +28,6 @@ public class EnemyMovement : MonoBehaviour {
 			Vector3 direction = waypoints [nextIndex].transform.position - transform.position;
 			if (Vector3.Angle (transform.forward, direction ) > 10) {
 				transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), 4*Time.deltaTime);
-				print (Vector3.Angle (transform.position, waypoints [nextIndex].transform.position ));
 			}
 			else {
 				currentIndex = nextIndex;
