@@ -24,13 +24,15 @@ public class CountdownTimer : MonoBehaviour
 	//For now this script just uses the list set up below.
 	//-----------------------------------------------------------------------------------
 	private List<int> m_scores = new List<int>();
-	
+	private GUIStyle style;
 	// Use this for initialization
 	void Start()
 	{	
 		m_startingMinutes = GlobalValues.S.startTime ();
 		this.Init(m_startingMinutes);
 		//m_timerLabel = guiText;
+
+		style.fontSize = 0;
 	}
 	
 	// Update is called once per frame
