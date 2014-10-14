@@ -19,9 +19,12 @@ public class SightTrigger : MonoBehaviour {
 	void OnTriggerStay(Collider other){
 		checkPlayer (other);
 	}
-	void gameOver(){
+	void gameOver(Collider other){
 		//do game over stuff
 		print ("GAME OVER");
+		other.transform.FindChild("Face").GetComponent<MeshRenderer> ().enabled = true;
+		GlobalValues.S.Died ();		// Player "Died"
+
 	}
 
 	void OnDrawGizmosSelected () {
@@ -37,7 +40,7 @@ public class SightTrigger : MonoBehaviour {
 			RaycastHit rayInfo;
 			if (Physics.Raycast (body.position, other.transform.position - body.position, out rayInfo)) {
 					if (rayInfo.collider.tag == "Player") {
-							gameOver ();
+							gameOver (other);
 					}
 			}
 		}

@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour {
 	AudioSource[] sources;
 
 	public GameObject level2;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -33,6 +34,9 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(GlobalValues.S.isGameOver()){
+			return;
+		}
 		Vector3 velocity = new Vector3();
 		foreach (var item in controls) {
 			if (Input.GetKey(item.Key)) {
@@ -57,4 +61,5 @@ public class PlayerMovement : MonoBehaviour {
 
 		level2.gameObject.SetActive(this.transform.position.z > 1);
 	}
+
 }
