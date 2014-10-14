@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour {
 	private float moveSpeed = 10.0f;
 	private float minDistance = 0.5f;
 
+	private float lerpT=0;
+
 	
 	// Use this for initialization
 	void Start () {
@@ -26,13 +28,18 @@ public class EnemyMovement : MonoBehaviour {
 				nextIndex = 0;
 			}
 			Vector3 direction = waypoints[nextIndex].transform.position - transform.position;
-			if (Vector3.Angle(transform.forward, direction) > 10) {
-				var towards = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 4*Time.deltaTime);
-				rigidbody.MoveRotation(towards);
+
+			//Vector3.Angle (
+			if (Vector3.Angle(transform.forward, direction) !=0) {
+				//Debug.DrawRay(transform.position, direction, Color.green, 10f);
+				//Debug.DrawRay(transform.position, transform.forward, Color.cyan, 10f);
+
+				transform.forward = Vector3.RotateTowards(transform.forward, direction.normalized, Time.deltaTime, 1);
 			}
 			else {
 				currentIndex = nextIndex;
 				currentWaypoint = waypoints [currentIndex];
+				lerpT=0;
 			}
 		} else {
 			MoveTowardWaypoint ();
@@ -42,6 +49,6 @@ public class EnemyMovement : MonoBehaviour {
 		Vector3 direction = currentWaypoint.transform.position - transform.position;
 		Vector3 moveVector = direction.normalized * moveSpeed * Time.deltaTime;
 		transform.position += moveVector;
-		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), Time.deltaTime);
+		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), Time.deltaTime);
 	}
 }
