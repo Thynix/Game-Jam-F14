@@ -1,34 +1,59 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EnemyMovement : MonoBehaviour {
 
-	public Transform[] waypoints;
-	private Transform currentWaypoint;
+	public string pathName;
+
+	private Vector3 currentWaypoint;
 	private int currentIndex;
 	
 	private float moveSpeed = 5.0f;
 	private float minDistance = 0.5f;
 
+	private List<Vector3> waypoints;
+
+	private Vector3 startingPosition;
 	
 	// Use this for initialization
 	void Start () {
-		currentWaypoint = waypoints [0];
+		waypoints = new List<Vector3>();
+
+		var path_input = Resources.Load<TextAsset>(pathName);
+		var json = new JSONObject(path_input.text);
+		var path = json[0];
+
+		foreach (var waypoint in path.list) {
+			waypoints.Add(new Vector3(waypoint[0].f, waypoint[1].f, waypoint[2].f));
+		}
+
+		currentWaypoint = waypoints[0];
 		currentIndex = 0;
+		startingPosition = this.transform.position;
+		Describe();
 	}
-	
+
+	void Describe() {
+		//Debug.Log("Moving from " + Location() + " to " + currentWaypoint.ToString());
+	}
+
+	Vector3 Location() {
+		return this.gameObject.transform.position - startingPosition;
+	}
+
 	// Update is called once per frame
 	void Update () {
-		if (Vector3.Distance (currentWaypoint.transform.position, transform.position) < minDistance) {
+		if (Vector3.Distance(currentWaypoint, Location()) < minDistance) {
 			int nextIndex = currentIndex;
 			++nextIndex;
-			if (nextIndex > waypoints.Length - 1) {
+			if (nextIndex > waypoints.Count - 1) {
 				nextIndex = 0;
 			}
-			Vector3 direction = waypoints[nextIndex].transform.position - transform.position;
+			Vector3 direction = waypoints[nextIndex] - Location();
+			Describe();
 
-			//Vector3.Angle (
-			if (Vector3.Angle(transform.forward, direction) > 10) {
+			if (Vector3.Angle(transform.forward, direction) > 1) {
 				//Debug.DrawRay(transform.position, direction, Color.green, 10f);
 				//Debug.DrawRay(transform.position, transform.forward, Color.cyan, 10f);
 
@@ -36,16 +61,15 @@ public class EnemyMovement : MonoBehaviour {
 			}
 			else {
 				currentIndex = nextIndex;
-				currentWaypoint = waypoints [currentIndex];
+				currentWaypoint = waypoints[currentIndex];
 			}
 		} else {
-			MoveTowardWaypoint ();
+			MoveTowardWaypoint();
 		}
 	}
 	private void MoveTowardWaypoint(){
-		Vector3 direction = currentWaypoint.transform.position - transform.position;
+		Vector3 direction = currentWaypoint - Location();
 		Vector3 moveVector = direction.normalized * moveSpeed * Time.deltaTime;
 		transform.position += moveVector;
-		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), Time.deltaTime);
 	}
 }
