@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(GlobalValues.S.isGameOver()){
+		if(GlobalValues.S.isGameOver()||GlobalValues.S.isGameDone()){
 			return;
 		}
 		Vector3 velocity = new Vector3();

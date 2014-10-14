@@ -8,11 +8,9 @@ public class EnemyMovement : MonoBehaviour {
 
 	private Vector3 currentWaypoint;
 	private int currentIndex;
-	
+
 	private float moveSpeed = 5.0f;
 	private float minDistance = 0.5f;
-	private bool gameOver = false;
-
 	private List<Vector3> waypoints;
 
 	private Vector3 startingPosition;
@@ -46,10 +44,13 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//game over logic
+		if (GlobalValues.S.isGameDone ()) {
+			return;
+		}
 		if (GlobalValues.S.isGameOver()) {
 			Vector3 playerDirection = GameObject.Find("Player").transform.position - transform.position;
 			playerDirection.z = 0;
-			transform.forward = Vector3.RotateTowards(transform.forward, playerDirection.normalized, Time.deltaTime*4, 1);
+			transform.forward = Vector3.RotateTowards(transform.forward, playerDirection.normalized, Time.deltaTime*3, 1);
 			return;
 		}
 		if (Vector3.Distance(currentWaypoint, Location()) < minDistance) {
