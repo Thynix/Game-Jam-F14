@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		lastFootstep = this.transform.position;
-		Physics.gravity = new Vector3(0, 0, -98f);
+		Physics.gravity = new Vector3(0, 0, -130f);
 		sources = this.GetComponentsInChildren<AudioSource>();
 		level2 = GameObject.Find("level 2");
 	}

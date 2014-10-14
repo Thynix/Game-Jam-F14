@@ -7,7 +7,7 @@ public class EnemyMovement : MonoBehaviour {
 	private Transform currentWaypoint;
 	private int currentIndex;
 	
-	private float moveSpeed = 10.0f;
+	private float moveSpeed = 5.0f;
 	private float minDistance = 0.5f;
 
 	
