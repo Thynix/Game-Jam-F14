@@ -15,20 +15,12 @@ public class PlayerMovement : MonoBehaviour {
 	// 10 meters / second -- TODO: Why is it this? Unit vector * this * seconds?
 	public float moveSpeed;
 
-	public Vector3 lastFootstep;
-
-	public float stepDistance;
-
-	AudioSource[] sources;
-
 	public GameObject level2;
 
 	
 	// Use this for initialization
 	void Start () {
-		lastFootstep = this.transform.position;
 		Physics.gravity = new Vector3(0, 0, -130f);
-		sources = this.GetComponentsInChildren<AudioSource>();
 		level2 = GameObject.Find("level 2");
 	}
 	
@@ -42,18 +34,6 @@ public class PlayerMovement : MonoBehaviour {
 			if (Input.GetKey(item.Key)) {
 				velocity += item.Value;
 			}
-		}
-
-		if (Vector3.Distance(this.transform.position, lastFootstep) > stepDistance) {
-			AudioSource step;
-			int tried = 0;
-			do {
-				step = sources[Random.Range(0, sources.Length)];
-				tried++;
-			} while(step.isPlaying && tried < sources.Length);
-			step.Play();
-
-			lastFootstep = this.transform.position;
 		}
 
 		velocity.Normalize();
