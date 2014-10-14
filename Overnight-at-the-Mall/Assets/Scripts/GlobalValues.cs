@@ -26,6 +26,9 @@ public class GlobalValues : MonoBehaviour {
 	}
 
 	void Update(){
+		if (Input.GetKey(KeyCode.Escape)) {
+			Application.LoadLevel("TitleScreen");
+		}
 	}
 	public void Died(){
 		gameOver = true;
