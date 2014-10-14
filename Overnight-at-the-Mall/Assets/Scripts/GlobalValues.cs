@@ -6,7 +6,7 @@ public class GlobalValues : MonoBehaviour {
 	public static GlobalValues S;
 	private bool gameComplete = false;
 	private bool gameOver = false;
-	private float startingTime = 8.0f;
+	private float startingTime = 3.0f;
 
 	private 
 	void Awake(){
