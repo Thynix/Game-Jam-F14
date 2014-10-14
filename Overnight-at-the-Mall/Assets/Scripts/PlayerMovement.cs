@@ -16,7 +16,6 @@ public class PlayerMovement : MonoBehaviour {
 	public float moveSpeed;
 
 	public GameObject level2;
-
 	
 	// Use this for initialization
 	void Start () {

@@ -7,6 +7,7 @@ public class GlobalValues : MonoBehaviour {
 	private bool gameComplete = false;
 	private bool gameOver = false;
 	private float startingTime = 3.0f;
+	public bool inBatteryRange = false;
 
 	private 
 	void Awake(){
