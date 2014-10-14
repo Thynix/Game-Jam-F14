@@ -26,9 +26,13 @@ public class EnemyMovement : MonoBehaviour {
 				nextIndex = 0;
 			}
 			Vector3 direction = waypoints[nextIndex].transform.position - transform.position;
+
+			//Vector3.Angle (
 			if (Vector3.Angle(transform.forward, direction) > 10) {
-				var towards = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 4*Time.deltaTime);
-				rigidbody.MoveRotation(towards);
+				//Debug.DrawRay(transform.position, direction, Color.green, 10f);
+				//Debug.DrawRay(transform.position, transform.forward, Color.cyan, 10f);
+
+				transform.forward = Vector3.RotateTowards(transform.forward, direction.normalized, Time.deltaTime, 1);
 			}
 			else {
 				currentIndex = nextIndex;
@@ -42,6 +46,6 @@ public class EnemyMovement : MonoBehaviour {
 		Vector3 direction = currentWaypoint.transform.position - transform.position;
 		Vector3 moveVector = direction.normalized * moveSpeed * Time.deltaTime;
 		transform.position += moveVector;
-		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), Time.deltaTime);
+		//transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), Time.deltaTime);
 	}
 }

@@ -21,11 +21,14 @@ public class PlayerMovement : MonoBehaviour {
 
 	AudioSource[] sources;
 
+	public GameObject level2;
+	
 	// Use this for initialization
 	void Start () {
 		lastFootstep = this.transform.position;
 		Physics.gravity = new Vector3(0, 0, -98f);
 		sources = this.GetComponentsInChildren<AudioSource>();
+		level2 = GameObject.Find("level 2");
 	}
 	
 	// Update is called once per frame
@@ -51,5 +54,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		velocity.Normalize();
 		this.gameObject.rigidbody.velocity = velocity * moveSpeed * Time.deltaTime;
+
+		level2.gameObject.SetActive(this.transform.position.z > 1);
 	}
 }
