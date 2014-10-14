@@ -50,16 +50,14 @@ class GUIController : MonoBehaviour
     public void Update()
     {
         exp_bar.Update();
+		health_bar.Update ();
+		if(GlobalValues.S.inBatteryRange){
+			health_bar.IncrimentBar(Mathf.CeilToInt(Time.deltaTime));
+		}
+		else{
+			health_bar.IncrimentBar(Mathf.CeilToInt(Time.deltaTime) * -1);
+		}
 
-        if (exp_bar.getLevel() - last_level >= 1)
-        {
-            // level changed: change stuff here
-            //Debug.Log("DING! You Are Now Level " + exp_bar.getLevel());
-
-            last_level = exp_bar.getLevel();
-        }
-
-        health_bar.Update();
 
         mana_bar.Update();
     }

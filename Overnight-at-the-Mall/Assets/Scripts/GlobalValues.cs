@@ -4,10 +4,13 @@ using System.Collections;
 public class GlobalValues : MonoBehaviour {
 
 	public static GlobalValues S;
+
 	private bool gameComplete;
 	private bool gameOver;
 	private float startingTime;
 	private GUIStyle style;
+
+	public bool inBatteryRange = false;
 
 	private 
 	void Awake(){
