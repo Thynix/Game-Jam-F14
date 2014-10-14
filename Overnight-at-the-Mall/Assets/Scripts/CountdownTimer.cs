@@ -55,6 +55,7 @@ public class CountdownTimer : MonoBehaviour
 			m_miliseconds = 0.0f;
 			m_seconds = 0.0f;
 			m_mins = 0.0f;
+			GlobalValues.S.timeOver();
 		}
 	}
 	void OnGUI(){
