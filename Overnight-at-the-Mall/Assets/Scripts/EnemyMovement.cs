@@ -14,6 +14,7 @@ public class EnemyMovement : MonoBehaviour {
 	private List<Vector3> waypoints;
 
 	private Vector3 startingPosition;
+	public bool sentry = false;
 
 	// Use this for initialization
 	void Start () {
@@ -44,7 +45,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//game over logic
-		if (GlobalValues.S.isGameDone ()) {
+		if (GlobalValues.S.isGameDone () || sentry) {
 			return;
 		}
 		if (GlobalValues.S.isGameOver()) {
