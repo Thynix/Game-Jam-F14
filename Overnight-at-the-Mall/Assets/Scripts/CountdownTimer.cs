@@ -60,8 +60,8 @@ public class CountdownTimer : MonoBehaviour
 	}
 	void OnGUI(){
 		GUI.contentColor = Color.white;
-		GUI.Label(new Rect(Screen.width - 100, 0, Screen.width, Screen.height),
-		          string.Format("<size=20><color=white>{0:d2}:{1:d2}:{2:d2}</color></size>", (int) m_mins, (int) m_seconds, (int)m_miliseconds),
+		GUI.Label(new Rect(Screen.width - 250, 0, Screen.width, Screen.height),
+		          string.Format("<size=20><color=white>Until mall opens: {0:d2}:{1:d2}:{2:d2}</color></size>", (int) m_mins, (int) m_seconds, (int)m_miliseconds),
 		          style);
 	}
 	
