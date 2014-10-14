@@ -14,7 +14,7 @@ public class CountdownTimer : MonoBehaviour
 	private float m_totalmiliseconds;
 
 	private GUIStyle style;
-	
+
 	// Use this for initialization
 	void Start()
 	{	
