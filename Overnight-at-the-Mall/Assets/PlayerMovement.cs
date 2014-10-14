@@ -14,10 +14,13 @@ public class PlayerMovement : MonoBehaviour {
 
 	// 10 meters / second -- TODO: Why is it this? Unit vector * this * seconds?
 	public float moveSpeed;
-
+	public GameObject level2;
+	
 	// Use this for initialization
 	void Start () {
 		Physics.gravity = new Vector3(0, 0, -98f);
+		level2 = GameObject.Find("level 2");
+
 	}
 	
 	// Update is called once per frame
@@ -31,5 +34,15 @@ public class PlayerMovement : MonoBehaviour {
 
 		velocity.Normalize();
 		this.gameObject.rigidbody.velocity = velocity * moveSpeed * Time.deltaTime;
+
+		if (transform.position.z < 1)
+			{
+			//Renderer[] allChildRenderers = GetComponentsInChildren<level2>();
+			
+			//foreach(Renderer R in allChildRenderers )
+			//	R.enabled = false;
+
+			print ("sean");
+			}
 	}
 }
