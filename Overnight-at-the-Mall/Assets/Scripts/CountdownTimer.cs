@@ -31,8 +31,7 @@ public class CountdownTimer : MonoBehaviour
 		m_startingMinutes = GlobalValues.S.startTime ();
 		this.Init(m_startingMinutes);
 		//m_timerLabel = guiText;
-
-		style.fontSize = 0;
+		
 	}
 	
 	// Update is called once per frame
