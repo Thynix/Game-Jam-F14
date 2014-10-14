@@ -4,15 +4,18 @@ using System.Collections;
 public class Score : MonoBehaviour {
 
 	private int score;
+	private GUIStyle style;
 
 	// Use this for initialization
 	void Start () {
 		score = 0;
-		Add(0);
+		style = new GUIStyle();
+		style.richText = true;
 	}
 
 	void OnGUI() {
-		GUI.Label(new Rect(0, 0, Screen.width, Screen.height), string.Format("Score: {0}", score));
+		GUI.contentColor = Color.white;
+		GUI.Label(new Rect(0, 0, Screen.width, Screen.height), string.Format("<size=20><color=white>Score: {0}</color></size>", score), style);
 	}
 
 	public void Add(int value) {
