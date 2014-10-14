@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour {
 		}
 
 		velocity.Normalize();
-		this.gameObject.rigidbody.velocity = velocity * moveSpeed * Time.deltaTime;
+		this.gameObject.rigidbody.velocity = velocity * moveSpeed;// * Time.deltaTime;
+		print (rigidbody.velocity);
 
 		level2.gameObject.SetActive(this.transform.position.z > 1);
 	}
